@@ -60,7 +60,7 @@ const JobList = () => {
     },
     Pinterest: {
       jobTitle: "Software Engineer II @",
-      duration: "JUL 2022 - JAN 2025",
+      duration: "JUL 2024 - JAN 2025",
       desc: [
         "Led the development of a generative AI solution using LLMs for advanced prompt engineering, improving SEO and ad relevance, and resulting in a 20% increase in click-through rates, ad revenue and business visibility",
         "Designed and developed an intuitive user interface for a prompt management system for 500K+ users, with key focus on accessibility, real-time collaboration features, and dynamic data visualization",
