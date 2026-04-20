@@ -14,9 +14,8 @@ const About = () => {
   );
   const two = (
     <p>
-      In my free time, I love making weird techy and artsy (sometimes both)
-      things. I’m also nerdy about tech gadgets, love literary fiction, and
-      play way too many battle royale games.
+      In my free time, I’m nerdy about tech gadgets, love literary fiction, and
+      play way too many battle royale games. Oh, I make content too.
     </p>
   );
 
