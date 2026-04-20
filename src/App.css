@@ -1,0 +1,131 @@
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 80px;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-section.is-visible > *:nth-child(1) { transition-delay: 0s; }
+.fade-in-section.is-visible > *:nth-child(2) { transition-delay: 0.1s; }
+.fade-in-section.is-visible > *:nth-child(3) { transition-delay: 0.15s; }
+.fade-in-section.is-visible > *:nth-child(4) { transition-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.App {
+  font-family: "NTR";
+  background-color: var(--navy);
+  color: var(--lightest-slate);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none !important;
+  color: var(--green-bright);
+}
+
+a:hover {
+  color: var(--lightest-slate);
+}
+
+#content {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.rs-steps-horizontal .rs-steps-item-content {
+  text-align: left;
+}
+
+::selection {
+  background: var(--lightest-navy);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+}
+
+.section-header {
+  display: flex;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.section-header::after {
+  content: "";
+  display: block;
+  width: 300px;
+  margin-top: 39px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: var(--lightest-navy);
+}
+
+.section-title {
+  font-family: "NTR", sans-serif;
+  color: var(--lightest-slate);
+  font-size: 46px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    flex-direction: column;
+    padding: 0px 24px;
+  }
+
+  #content {
+    padding: 10px 10px;
+    width: 100%;
+  }
+
+  .section-header {
+    width: unset;
+  }
+
+  .section-header::after {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+}

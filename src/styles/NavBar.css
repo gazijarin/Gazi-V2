@@ -1,0 +1,39 @@
+.navbar {
+    background-color: var(--navy) !important;
+    color: var(--lightest-slate) !important;
+    font-family: 'NTR';
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--lightest-navy);
+  }
+
+  .navbar-brand {
+    color: var(--lightest-slate) !important;
+  }
+
+  .navbar-brand:hover {
+    color: var(--green-bright) !important;
+  }
+
+  .nav-link {
+    color: var(--lightest-slate) !important;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--green-bright) !important;
+  }
+
+  .navbar-toggler {
+    border-color: var(--green-bright) !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .navbar-brand  {
+        display: none;
+    }
+  
+    .nav-link {
+        display: block;
+      }
+  }
