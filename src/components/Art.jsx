@@ -17,6 +17,9 @@ const Art = () => {
     <div id="art">
       <div className="section-header">
         <span className="section-title">/ art</span>
+        <Link to="/art" className="explore-link">
+          Explore collection
+        </Link>
       </div>
       <FadeInSection delay="200ms">
         <div className="art-description">
@@ -32,11 +35,6 @@ const Art = () => {
               </div>
             </FadeInSection>
           ))}
-        </div>
-        <div className="see-more-container">
-          <Link to="/art" className="see-more-button">
-            see more
-          </Link>
         </div>
       </div>
     </div>

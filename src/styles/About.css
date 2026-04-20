@@ -8,7 +8,13 @@
   padding-top: 20px;
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 10px));
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+}
+
+@media only screen and (max-width: 480px) {
+  .about-description ul {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about-description li {

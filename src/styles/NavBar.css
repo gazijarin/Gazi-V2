@@ -24,10 +24,6 @@
     color: var(--green-bright) !important;
   }
 
-  .navbar-toggler {
-    border-color: var(--green-bright) !important;
-  }
-
   @media only screen and (max-width: 800px) {
     .navbar-brand  {
         display: none;
