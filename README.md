@@ -7,6 +7,9 @@
 <p align="center">
   The second iteration of <a href="https://gazijarin.com" target="_blank">gazijarin.com</a> built with Vite and React 19, leveraging Material UI v6 and Bootstrap 5.
 </p>
+<p align="center">
+  <img src="src/assets/view.png" width="100%" alt="gazi-v2-view"/>
+</p>
 
 ## 🛠 set-up
 
