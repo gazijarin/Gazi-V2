@@ -1,11 +1,24 @@
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   font-family: "NTR", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
   background-color: #0a192f;
   color: #ccd6f6;
 }

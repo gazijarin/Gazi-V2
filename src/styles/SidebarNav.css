@@ -33,26 +33,20 @@ a:hover {
   color: var(--lightest-slate) !important;
 }
 
+.nav-slash {
+  color: var(--green-bright);
+}
+
+a:hover .nav-slash {
+  color: var(--green-bright) !important;
+}
+
 img {
   height: 18px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .sidebar-nav {
-    width: 100%;
-    height: 50px;
-    position: unset;
-    align-items: center;
-  }
-
-  .sidebar-links {
-    padding-left: 20px;
-    flex-direction: row;
-    text-align: right;
-    font-size: 9px;
-  }
-
-  img {
-    height: 12px;
+    display: none;
   }
 }

@@ -28,12 +28,22 @@
     border-color: var(--green-bright) !important;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 800px) {
     .navbar-brand  {
         display: none;
     }
   
     .nav-link {
         display: block;
+        padding: 12px 0;
       }
+
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .nav-link:focus, .nav-link:active, .nav-link:hover {
+        color: var(--green-bright) !important;
+    }
   }

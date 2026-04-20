@@ -90,10 +90,9 @@ ul {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   #experience {
     padding: 60px 0;
-    overflow-y: auto;
     padding-left: unset;
     padding-right: unset;
   }

@@ -11,6 +11,7 @@ export default function FadeInSection(props) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setVisible(true);
+          observer.unobserve(node);
         }
       });
     });
