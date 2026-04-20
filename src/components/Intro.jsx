@@ -3,13 +3,13 @@ import "../styles/Intro.css";
 import { TypeAnimation } from "react-type-animation";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import FadeInSection from "./FadeInSection";
-import ParticlePortrait from "./ParticlePortrait";
+import AsciiPortrait from "./AsciiPortrait";
 
 const Intro = () => {
   return (
     <div id="intro">
       <div className="intro-simulation">
-        <ParticlePortrait />
+        <AsciiPortrait />
       </div>
       <div className="intro-block">
         <div className="intro-title">

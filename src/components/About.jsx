@@ -21,7 +21,6 @@ const About = () => {
   );
 
   const techStack = [
-    "Machine Learning",
     "Python",
     "Typescript",
     "React.js",
