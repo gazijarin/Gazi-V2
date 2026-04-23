@@ -46,6 +46,7 @@ const HardwareProjects = () => {
                   )}
                   <div className="card-title">{key}</div>
                   <div className="card-desc">{hardwareProjects[key]["desc"]}</div>
+                  <div className="full-log-link">Full project log</div>
                   <div className="card-tech">{hardwareProjects[key]["techStack"]}</div>
                 </li>
               </Link>

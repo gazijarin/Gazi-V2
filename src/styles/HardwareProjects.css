@@ -19,6 +19,32 @@
   aspect-ratio: 1 / 1;
 }
 
+#hardware-projects .projects-card {
+  cursor: pointer;
+}
+
+.full-log-link {
+  color: var(--green-bright);
+  font-family: "NTR", sans-serif;
+  font-size: 16px;
+  margin-top: -30px;
+  margin-bottom: 20px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+}
+
+.full-log-link:hover {
+  color: var(--lightest-slate) !important;
+  transform: translateX(5px);
+}
+
+.full-log-link::after {
+  content: "\2192";
+  margin-left: 5px;
+  font-size: 18px;
+}
+
 .project-image {
   width: 100%;
   height: 100%;
