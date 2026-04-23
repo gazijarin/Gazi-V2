@@ -44,7 +44,8 @@ const NavBar = () => {
             <Nav.Link href="/#intro">Home</Nav.Link>
             <Nav.Link href="/#about">About</Nav.Link>
             <Nav.Link href="/#experience">Experience</Nav.Link>
-            <Nav.Link href="/#projects">Projects</Nav.Link>
+            <Nav.Link href="/#projects">Software</Nav.Link>
+            <Nav.Link href="/#hardware-projects">Hardware</Nav.Link>
             <Nav.Link href="/#art">Art</Nav.Link>
           </Nav>
           <Nav className="ms-auto" onSelect={() => setExpanded(false)}>

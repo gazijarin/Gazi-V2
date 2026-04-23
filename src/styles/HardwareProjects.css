@@ -1,0 +1,48 @@
+#hardware-projects {
+  margin: auto;
+  max-width: 1000px;
+  padding: 80px 0;
+}
+
+#hardware-projects .section-header {
+  display: flex;
+}
+
+#hardware-projects .fade-in-section {
+  height: 100%;
+}
+
+.project-image-container {
+  margin: -2rem -1.75rem 1.5rem -1.75rem;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  aspect-ratio: 1 / 1;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.transparent-card {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: 1px solid var(--lightest-navy);
+}
+
+.transparent-card:hover {
+  background-color: var(--navy-shadow) !important;
+}
+
+.projects-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+@media only screen and (max-width: 600px) {
+  #hardware-projects {
+    padding: 60px 0;
+  }
+}

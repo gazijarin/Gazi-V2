@@ -55,6 +55,7 @@ const JobList = () => {
       duration: "JAN 2025 - PRESENT",
       desc: [
         "Built and launched large-scale machine learning-driven conversion autobidding models at Google scale, influencing bidding decisions across millions of advertisers and users",
+        "Integrated Google Gemini encoders into bidding models to enhance feature representation and improve prediction performance",
         "Led end-to-end model development (data, training, evaluation, and production launch) for Proxybidder ML systems, directly driving multi-million-dollar revenue impact through improved conversion efficiency",
       ],
     },

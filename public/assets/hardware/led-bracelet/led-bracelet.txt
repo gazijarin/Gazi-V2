@@ -1,0 +1,129 @@
+﻿Building a Sound-Reactive LED Bracelet: The Coachella Build
+________________
+
+
+0. where it started
+I wanted something to wear at Coachella that wasn't bought off some Etsy shop for $60. Everyone shows up with their fits planned out for weeks and I wanted something that felt actually mine. Something that reacted to the music in real time.
+I'm a CS student so I figured okay, how hard can hardware be. I write code every day. A microcontroller is basically just a tiny computer right. Wrong. Well, kind of wrong. The coding part was genuinely easy. Everything else humbled me pretty fast.
+The vision was simple: a bracelet that pulses and lights up to whatever music is playing around it. Wear it at night, looks insane under stage lights, costs less than a festival food order.
+________________
+
+
+1. the parts
+I want to be upfront, I did not know what half of these things were when I ordered them. I'm listing them the way I wish someone had listed them for me. Everything here is cheap, ships fast on Amazon, and most of the tools you buy once and reuse forever.
+The brain: Seeed Studio XIAO RP2040. This is your microcontroller. Think of it like a Raspberry Pi but smaller than a stick of gum. It runs your code and talks to everything else. It has a USB-C port on it which is how you upload code from your laptop. This is the thing you are actually programming.
+The lights: DIYmall WS2812B 8-bit LED Ring, comes in a 5 pack so you have extras to experiment with. Eight individually addressable RGB LEDs arranged in a circle. Each one can be any color independently. The ring has two sides, input and output. You only use the input side labeled DIN. The output side is for chaining multiple rings together which is something you can do later.
+The microphone: MAX4466 Electret Microphone Amplifier, comes in a 6 pack. This little blue board picks up sound from the air and converts it into a voltage signal your microcontroller can read. It has a small adjustable dial on the back to control sensitivity.
+The battery: EEMB 3.7V 350mAh LiPo. Flat pouch battery, rechargeable. Small enough to sit on the underside of a bracelet band. Comes with a small white JST connector plug. Before you connect this to anything, check that the red wire is positive and black is negative. Some cheap batteries are wired backwards and will fry your board.
+The charger: HiLetgo TP4056 Type-C, comes in a 3 pack. This little board sits between your battery and your microcontroller. Plug USB-C into it and it charges the battery safely. It has a red light while charging and switches off when done. Has pads labeled B+ B- for the battery side and OUT+ OUT- for the output to your board.
+Everything else: 30AWG silicone wire, solder, soldering iron, helping hands clamp, hot glue gun, elastic band, velcro dots, electrical tape. The soldering iron is the one thing worth spending a little more on -- get a Pinecil. Everything else is whatever's cheapest.
+________________
+
+
+2. the circuit
+This is the whole thing. Seriously, it is not complicated once you see it drawn out.
+                   +------------------+
+                    |   XIAO RP2040    |
+    +----------+    |                  |
+    | MAX4466  |    |  3V3 <-- VCC     |
+    |  (mic)   |    |  GND <-- GND     |
+    |          |    |  A0  <-- OUT     |
+    +----------+    |                  |
+                    |  VCC --> 5V      |
+    +----------+    |  GND --> GND     |    +-----------+
+    | WS2812B  |    |  D1  --> DIN     |    |  TP4056   |
+    | LED Ring |    |                  |    | (charger) |
+    +----------+    |  VIN <-- OUT+    |    |           |
+                    |  GND <-- OUT-    |    | B+ <-- battery red  |
+                    +------------------+    | B- <-- battery blk  |
+                                           +-----------+
+
+
+That's it. Six connections for the mic and LED ring, four connections for the battery and charger. Ten solder joints total.
+The mic reads sound as an analog voltage on pin A0. The code samples that voltage really fast, figures out how loud it is, and tells the LED ring how many lights to turn on and what color.
+________________
+
+
+3. soldering (aka the thing i was most scared of)
+I had never soldered before this. My mental image of it was something you needed years of practice for, like some specialized trade skill.
+It is not that. It is closer to using a really precise hot glue gun. The iron melts a metal called solder onto two surfaces and when it cools, those surfaces are permanently connected both physically and electrically.
+The thing that actually helped me was understanding what a good joint looks like versus a bad one. Good joints are shiny and smooth, kind of volcano shaped. Bad joints are dull and grey and crumbly looking. If yours looks dull just reheat it for two seconds and it fixes itself. You can always redo it.
+The mistake I made was solder bridges. That is when two adjacent pads accidentally get connected by a tiny blob of solder crossing between them. It will short circuit your board. It happened to me on the GND pads and for like ten minutes I thought I had killed the whole board. I had not. You just reheat and drag the iron tip away quickly and the excess solder follows it. Problem solved.
+One thing nobody told me: tin both surfaces before joining them. Tinning means coating each surface with a thin layer of solder before you connect them. Once both surfaces are pre-coated, joining them is just touching them together and applying heat for two seconds. That single habit made probably 80% of my joints come out good on the first try.
+________________
+
+
+4. the code
+If you are a CS student this part will feel like home. It is basically just: read a value, map it to a range, update some LEDs.
+#include <Adafruit_NeoPixel.h>
+
+
+#define MIC_PIN     A0
+#define LED_PIN     D1
+#define NUM_LEDS    8
+#define SAMPLE_WINDOW   50
+#define NOISE_FLOOR     10
+#define SMOOTHING       0.25f
+
+
+Adafruit_NeoPixel ring(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
+float smoothedLevel = 0;
+
+
+void setup() {
+  ring.begin();
+  ring.setBrightness(80);
+  ring.show();
+}
+
+
+void loop() {
+  unsigned long start = millis();
+  int minVal = 1023, maxVal = 0;
+
+
+  while (millis() - start < SAMPLE_WINDOW) {
+    int sample = analogRead(MIC_PIN);
+    if (sample > maxVal) maxVal = sample;
+    if (sample < minVal) minVal = sample;
+  }
+
+
+  int peakToPeak = max(0, (maxVal - minVal) - NOISE_FLOOR);
+  smoothedLevel = smoothedLevel * (1.0f - SMOOTHING)
+                + (float)peakToPeak * SMOOTHING;
+
+
+  int litLEDs = map((int)smoothedLevel, 0, 300, 0, NUM_LEDS);
+  litLEDs = constrain(litLEDs, 0, NUM_LEDS);
+
+
+  ring.clear();
+  for (int i = 0; i < litLEDs; i++) {
+    float t = (float)i / (NUM_LEDS - 1);
+    uint8_t r = (uint8_t)(t * 255);
+    uint8_t g = (uint8_t)((1.0f - t) * 200);
+    ring.setPixelColor(i, ring.Color(r, g, 0));
+  }
+  ring.show();
+}
+
+
+The smoothing value is the most interesting part to play with. Low smoothing and the LEDs are super reactive and jumpy. High smoothing and they kind of breathe and flow. I landed on 0.25 which feels natural without being chaotic. The 300 in the map function is your calibration number. Open the serial plotter in Arduino IDE, make noise, watch the peaks, adjust that number to match what you actually see.
+The color logic maps green at low volumes through yellow and into red at high volumes, like a VU meter. You can swap this out for rainbow cycling using HSV math if you want something more festival appropriate.
+________________
+
+
+5. the aesthetic problem
+Here is the honest part. When I first got it working it looked terrible. White elastic band, components stuck on with hot glue blobs, wires going in every direction, electrical tape patches everywhere. It worked but it looked like something from a middle school science fair.
+For Coachella that is not good enough.
+The fix was mostly about discipline rather than buying more stuff. I redid the whole assembly with one rule: if you can see it from the top, it has to look intentional. Every wire got rerouted to the underside of the band and tacked down flat with thin strips of black tape. The hot glue blobs came off and got replaced with E6000 adhesive which dries clear and holds way stronger. I painted every solder joint with liquid electrical tape from Home Depot, which dries black and flexible and makes everything look like it came off a factory line.
+The LED ring itself is genuinely beautiful when it is running. Eight LEDs in a circle reacting to bass hits in real time, going from green to red. At night, under stage lighting, it reads less like a DIY project and more like something you would actually see for sale.
+The one upgrade that made the biggest visual difference was swapping the white elastic for black. That single change made the whole thing look twice as intentional. The components on a white band look like mistakes. The same components on a black band look like design choices.
+________________
+
+
+6. what i learned
+Hardware has a different failure mode than software. In software when something breaks there is usually a stack trace, an error message, some breadcrumb pointing you somewhere. In hardware something just does not work and you have to reason backwards from nothing. The LED ring did not light up on battery power for a while and the answer turned out to be that the VCC pin on the XIAO only gets 5V when USB is connected. Switching to the 3V3 pin fixed it. There was no error message telling me that. I had to figure it out.
+The other thing is that small batteries die fast. 350mAh sounds like a number until you realize eight LEDs at full brightness can drain it in under ten minutes. Dropping brightness from 150 to 80 in the code tripled battery life.
+If you are a Computer Science person who has never done hardware before, the gap is smaller than it looks. The hard part is debugging without a console, which is just a different muscle you have not built yet.

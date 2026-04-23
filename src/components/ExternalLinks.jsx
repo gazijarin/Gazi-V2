@@ -6,21 +6,31 @@ const ExternalLinks = ({ githubLink, openLink }) => {
   return (
     <span className="external-links">
       {githubLink && (
-        <a className="github-icon" href={githubLink}>
+        <a
+          className="github-icon"
+          href={githubLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <GitHubIcon
             sx={{
               fontSize: 20,
-              color: "inherit"
+              color: "inherit",
             }}
           />
         </a>
       )}
       {openLink && (
-        <a className="open-icon" href={openLink}>
+        <a
+          className="open-icon"
+          href={openLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <OpenInBrowserIcon
             sx={{
               fontSize: 25,
-              color: "inherit"
+              color: "inherit",
             }}
           />
         </a>

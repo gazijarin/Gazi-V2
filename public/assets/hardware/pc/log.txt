@@ -1,0 +1,80 @@
+﻿________________
+
+
+Building my first PC: the Rei build
+________________
+
+
+0. where it started
+I didn't pick white because it was trending. I picked white because of Rei Ayanami.
+If you know, you know. Neon Genesis Evangelion has this whole color language around Rei: white plugsuit, pale skin, quiet and a little strange. I wanted the build to feel like that. Something cold but also clean. 
+I even put a Rei figure inside the case once it was done, tucked in the corner behind the GPU. That aesthetic decision made everything else downstream easier. White case, white motherboard shroud, white pump head on the AIO, white GPU cooler. Once you commit to an aesthetical standard, you stop second-guessing individual parts.
+________________
+
+
+1. picking parts
+Start with PCPartPicker. Seriously, use it before you buy a single thing. It checks compatibility automatically and tracks price history so you know if something is on sale or just perpetually listed at a fake discount.
+The most important compatibility relationship is CPU to motherboard. They have to share the same socket. I was on AMD's AM4 platform, so my Ryzen 7 5800X and NZXT N7 B550 board just work together without any adapters.
+Oh, this is a complete list of my parts:
+* CPU: AMD Ryzen 7 5800X, 8 cores
+* Cooler: NZXT Kraken Z63 RGB, 280mm AIO liquid cooler
+* Motherboard: NZXT N7 B550, white shroud
+* RAM: Corsair Vengeance RGB Pro, 32GB DDR4-3200
+* Storage: Samsung 970 Evo Plus 1TB NVMe
+* GPU: Gigabyte AERO OC RTX 4070 Ti
+* Case: HYTE Y60
+* PSU: EVGA SuperNOVA 850W Gold (SFX form factor)
+* Fans: Lian Li Uni Fan SL, mix of 120mm and 140mm
+________________
+
+
+2. the case
+The HYTE Y60 is the whole reason this build looks the way it does. The front and right side panels are one continuous wraparound piece of tempered glass. The inside of the case is the display. 
+Before I even installed a single part, I sat and thought about where every cable was going to run.
+Tip: Buy white or braided cables that match your theme. Use a lot of velcro tape to tie them all together.
+________________
+
+
+3. motherboard outside the case first
+This is the move that separates a calm build from a frustrating one. Before the board goes into the case, do this on the box it came in:
+* Seat the CPU (lift the lever, drop it in, it only fits one way, never force it)
+* Install the RAM (push down until both clips click, do it with some force, they resist)
+* Slot in the NVMe SSD (tiny M.2 stick, goes in at an angle, screw it flat)
+Doing this on a flat surface with good lighting means you're not doing it blind inside a case. The CPU especially: you get one shot before you're bending pins.
+Tip: Ground yourself before touching anything. Static discharge can kill components silently and you won't know until the first boot fails.
+________________
+
+
+4. the AIO cooler
+The Kraken Z63 is a 280mm radiator, meaning it has two 140mm fans attached to it. It mounts to the top of the Y60. The hoses attach to the CPU block and route up to the radiator.
+The order matters: mount the fans to the radiator first, then mount the radiator to the case, then route the hoses down to the CPU. Don't do it the other way around or you'll be twisting the hoses in awkward angles.
+The CPU block has thermal paste pre-applied. Don't add more unless you clean it off first. 
+________________
+
+
+6. the GPU
+The RTX 4070 Ti AERO OC is a triple-fan card and it is big. It seats in the top PCIe x16 slot. Push it in until you hear the clip at the end of the slot click. Then screw it to the case's expansion bracket at the back.
+The Y60 has a built-in GPU support bracket because HYTE knows that a card this heavy will physically sag over time and stress the slot. Use it. It takes two minutes to clip in.
+The GPU needs two 8-pin PCIe power connectors from the PSU. Route those cables so they enter from the side closest to the case edge, not across the face of the GPU where they'll be visible through the glass.
+________________
+
+
+7. fans
+Lian Li Uni fans are the cleanest fan solution I've found for a build like this. They daisy-chain: each fan connects to the next, and one cable runs back to the controller. For a case where cables are visible, going from eight individual cables to two is significant.
+I ran 120mm fans at the top (mounted to the radiator) and 140mm fans on the side panel. The airflow direction matters: top fans exhaust out, side fans bring air in across the GPU.
+Tip: Check which way airflow goes before you mount fans. There's a small arrow on the frame showing airflow direction. It's easy to install them backwards.
+________________
+
+
+8. first boot
+This is the moment. Everything is in. You plug in the monitor, keyboard, and power. You press the button.
+Either something happens or nothing does.
+Mine worked on the first try although I was really terrified it would not. I genuinely sat back and stared for about a minute.
+The only advice I would give here is to be very meticulous with each part. I advise following a YouTube tutorial closely and/or instructions from whatever AI you prefer. Do not do guesswork and document everything. It helps when things fall apart.
+Anyway, after that Windows was installed in twelve minutes and then GPU drivers from Nvidia's site. 
+________________
+
+
+How it looks now
+I like this build especially because it reads quiet and deliberate, the same way Rei does. It's not screaming for attention with aggressive RGB. It just sits there looking cold, and if you look close enough you notice the figure, and then you either get it or you don't.
+That's the build.

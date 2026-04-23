@@ -34,6 +34,30 @@
   background-color: var(--lightest-navy);
 }
 
+.project-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  height: 100%;
+}
+
+.project-card-link:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+#projects .section-header {
+  align-items: center;
+  justify-content: space-between;
+}
+
+#projects .section-header::after {
+  order: 1;
+  flex-grow: 1;
+  width: auto;
+}
+
+
 .card-header {
   margin-top: -20px;
   display: flex;
@@ -44,6 +68,30 @@
 }
 .folder-icon {
   color: var(--green-bright);
+}
+
+.explore-link {
+  order: 2;
+  margin-left: 20px;
+  font-family: "NTR", sans-serif;
+  font-size: 18px;
+  color: var(--green-bright);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.explore-link:hover {
+  color: var(--lightest-slate) !important;
+  transform: translateX(5px);
+}
+
+.explore-link::after {
+  content: "\2192";
+  margin-left: 8px;
+  font-size: 20px;
 }
 
 .github-icon {
@@ -75,6 +123,14 @@
   font-family: "NTR", sans-serif;
   color: var(--slate);
   font-size: 16px;
+}
+
+.spotlight-projects-desktop {
+  width: 100%;
+}
+
+.spotlight-projects-mobile {
+  display: none;
 }
 
 /* Spotlight carousel */
@@ -133,12 +189,48 @@
 }
 
 @media only screen and (max-width: 600px) {
-  #projects {
-    padding: 60px 0;
-    padding-left: unset;
-    padding-right: unset;
-  }
-  .carousel {
+  .spotlight-projects-desktop {
     display: none;
+  }
+
+  .spotlight-projects-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .spotlight-mobile-image {
+    width: 100%;
+    margin: 10px 0 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .spotlight-mobile-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #projects {
+    padding: 60px 20px;
+  }
+
+  #projects .section-header {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  #projects .section-header::after {
+    display: none;
+  }
+
+
+  .explore-link {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 5px;
   }
 }
