@@ -51,7 +51,7 @@ const JobList = () => {
 
   const experienceItems = {
     Google: {
-      jobTitle: "Software Engineer @",
+      jobTitle: "Software Engineer III @",
       duration: "JAN 2025 - PRESENT",
       desc: [
         "Built and launched large-scale machine learning-driven conversion autobidding models at Google scale, influencing bidding decisions across millions of advertisers and users",
