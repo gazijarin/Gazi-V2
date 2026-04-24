@@ -86,11 +86,13 @@
   cursor: pointer;
   border: 1px solid var(--green-bright);
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .intro-contact:hover {
-  background-color: var(--lightest-navy);
+  background-color: var(--green-tint);
+  transform: translateY(-3px);
+  outline: none;
 }
 
 /* Tablet */

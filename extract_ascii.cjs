@@ -6,16 +6,19 @@ const path = require('path');
   const browser = await chromium.launch();
   const page = await browser.newPage();
   
-  // Navigate to the site to get context and image
-  await page.goto('http://localhost:5173/');
-  
-  const results = await page.evaluate(async () => {
+  // Read the image file and convert to data URL
+  const imgPath = path.join(__dirname, 'public/profile.png');
+  const imgBuffer = fs.readFileSync(imgPath);
+  const imgBase64 = imgBuffer.toString('base64');
+  const dataUrl = `data:image/png;base64,${imgBase64}`;
+
+  const results = await page.evaluate(async (dataUrl) => {
     const chars = " .:-=+*#%@".split("");
     const sizes = [400, 280, 220];
     const data = {};
 
     const img = new Image();
-    img.src = '/profile.png';
+    img.src = dataUrl;
     await new Promise((resolve) => img.onload = resolve);
 
     for (const size of sizes) {
@@ -76,7 +79,7 @@ const path = require('path');
       data[size] = particles;
     }
     return data;
-  });
+  }, dataUrl);
 
   const output = `export const asciiData = ${JSON.stringify(results)};`;
   fs.writeFileSync(path.join(__dirname, 'src/assets/asciiData.js'), output);

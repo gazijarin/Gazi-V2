@@ -40,6 +40,12 @@ const spotlightProjects = {
 };
 
 const projects = {
+  "Gazi-V2 Portfolio": {
+    desc: "This is the second iteration of my portfolio, designed and rebuilt from the ground up using React and Vite. The previous version, now deprecated, earned 288+ stars on GitHub.",
+    techStack: "React.js, Vite, Bootstrap",
+    link: "https://github.com/gazijarin/Gazi-V2",
+    open: "https://gazijarin.com/",
+  },
   "TDSB Homework Management Interface": {
     desc: "An application created for Toronto District School Board, with a Flask back-end and a Vue front-end.",
     techStack: "Python (Flask), Vue.js, Bootstrap, SQL",
@@ -52,11 +58,13 @@ const projects = {
     link: "https://github.com/gazijarin/adamai",
     open: "https://gazijarin.github.io/AdamAI/",
   },
+  /*
   "Distributed Logging and Monitoring System": {
     desc: "A system that establishes an ORM connection to a Prisma client in order to communicate logs from microservices.",
     techStack: "Node.js (Express.js), React.js, PostgreSQL",
     link: "https://github.com/gazijarin/Distributed-Logging-and-Monitoring-System",
   },
+  */
 };
 
 const Projects = () => {
@@ -74,7 +82,7 @@ const Projects = () => {
         </a>
       </div>
       <div className="spotlight-projects-desktop">
-        <Carousel>
+        <Carousel interval={null}>
           {Object.keys(spotlightProjects).map((key, i) => (
             <Carousel.Item key={i}>
               <img
